@@ -38,3 +38,12 @@ id3comment=
 id3title=Yeast Radio
 id3year=2005
 
+# This will set the filename of saved enclosures using a pattern that may
+# include the date and title of the enclosure as given in the RSS feed.  This
+# is particularly useful with RSS feeds in which the enclosures have messy
+# URLs.
+[scientific_american]
+url=http://rss.sciam.com/sciam/science-talk
+spool=/home/tony/podcasts/sa
+id3album=Scientific American
+filespec=%(date)-%(title).mp3
