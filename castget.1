@@ -1,7 +1,7 @@
 .\" generated with Ronn/v0.7.3
 .\" http://github.com/rtomayko/ronn/tree/0.7.3
 .
-.TH "CASTGET" "1" "January 2016" "castget 1.2.0" "User Commands"
+.TH "CASTGET" "1" "January 2016" "castget 1.2.1" "User Commands"
 .
 .SH "NAME"
 \fBcastget\fR \- download RSS enclosures
@@ -56,27 +56,31 @@ restrict operation to items whose enclosures have names matching the regular exp
 .
 .TP
 \fB\-r\fR, \fB\-\-resume\fR
-resume aborted downloads
+resume aborted downloads\.
 .
 .TP
 \fB\-q\fR, \fB\-\-quiet\fR
-do not print anything except error messages
+do not print anything except error messages\.
 .
 .TP
 \fB\-v\fR, \fB\-\-verbose\fR
-print detailed progress information
+print detailed progress information\.
 .
 .TP
 \fB\-d\fR, \fB\-\-debug\fR
-print (lots of) connection debug information
+print (lots of) connection debug information\.
 .
 .TP
 \fB\-p\fR, \fB\-\-progress\-bar\fR
-print a progress bar when downloading enclosures
+print a progress bar when downloading enclosures\.
 .
 .TP
 \fB\-C\fR \fIfilename\fR, \fB\-\-rcfile\fR=\fIfilename\fR
-override the default filename for the configuration file
+override the default filename for the configuration file\. See FILES for details\.
+.
+.TP
+\fB\-D\fR \fIdirectory\fR, \fB\-\-datadir\fR=\fIdirectory\fR
+override the default directory for data\-files\. See FILES for details\.
 .
 .SH "EXAMPLES"
 .
@@ -123,6 +127,72 @@ To use a HTTP proxy, set the environment variable \fBhttp_proxy\fR:
 .
 .IP
 http_proxy=http://your\.proxy\.server:port/ castget
+.
+.SH "ENVIRONMENT"
+.
+.IP "\(bu" 4
+\fBXDG_CONFIG_HOME\fR
+.
+.IP
+Path for the user\-local configuration directory\. See FILES for details\.
+.
+.IP "\(bu" 4
+\fBXDG_DATA_HOME\fR
+.
+.IP
+Path for user\-local data files\. See FILES for details\.
+.
+.IP "" 0
+.
+.SH "FILES"
+.
+.IP "\(bu" 4
+\fB~/\.config/castget/config\fR
+.
+.IP
+configuration file\.
+.
+.IP
+castget looks for its configuration file in the following order:
+.
+.IP "1." 4
+$XDG_CONFIG_HOME/castget/castgetrc
+.
+.IP "2." 4
+~/\.config/castget/castgetrc
+.
+.IP "3." 4
+~/\.castgetrc
+.
+.IP "" 0
+.
+.IP
+A custom configuration file can be specified with the \fB\-C\fR or \fB\-\-rcfile\fR options\. This will take precedence over all the above locations and castget will terminate if the file cannot be found\.
+.
+.IP "\(bu" 4
+\fB~/\.local/share/castget\fR
+.
+.IP
+data directory for files that store the channel state\. These files should not normally be edited manually\.
+.
+.IP
+castget looks for its data directory in the following order:
+.
+.IP "1." 4
+$XDG_DATA_HOME/castget
+.
+.IP "2." 4
+~/\.local/share/castget
+.
+.IP "3." 4
+~/\.castget
+.
+.IP "" 0
+.
+.IP
+A custom data directory can be specified with the \fB\-\-datadir\fR option or configured with the \fBdatadir\fR key in the configuration file\. These settings will take precedence over all the above locations and castget will terminate if the directory cannot be found\.
+.
+.IP "" 0
 .
 .SH "SEE ALSO"
 castgetrc(5)

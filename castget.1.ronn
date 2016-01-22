@@ -55,22 +55,25 @@ options as arguments.
 ### Global options
 
   * `-r`, `--resume`:
-    resume aborted downloads
+    resume aborted downloads.
 
   * `-q`, `--quiet`:
-    do not print anything except error messages
+    do not print anything except error messages.
 
   * `-v`, `--verbose`:
-    print detailed progress information
+    print detailed progress information.
 
   * `-d`, `--debug`:
-    print (lots of) connection debug information
+    print (lots of) connection debug information.
 
   * `-p`, `--progress-bar`:
-    print a progress bar when downloading enclosures
+    print a progress bar when downloading enclosures.
 
   * `-C` <filename>, `--rcfile`=<filename>:
-    override the default filename for the configuration file
+    override the default filename for the configuration file. See FILES for details.
+
+  * `-D` <directory>, `--datadir`=<directory>:
+    override the default directory for data-files. See FILES for details.
 
 ## EXAMPLES
 
@@ -103,6 +106,48 @@ options as arguments.
   * To use a HTTP proxy, set the environment variable `http_proxy`:
 
     http_proxy=http://your.proxy.server:port/ castget
+
+## ENVIRONMENT
+
+  * `XDG_CONFIG_HOME`
+
+    Path for the user-local configuration directory. See FILES for details.
+
+  * `XDG_DATA_HOME`
+    
+    Path for user-local data files. See FILES for details.
+
+## FILES
+
+  * `~/.config/castget/config`
+
+    configuration file.
+
+    castget looks for its configuration file in the following order:
+
+      1. $XDG_CONFIG_HOME/castget/castgetrc
+
+      2. ~/.config/castget/castgetrc
+
+      3. ~/.castgetrc
+
+    A custom configuration file can be specified with the `-C` or `--rcfile` options. This will take precedence over all the above locations and castget will terminate if the file cannot be found.
+
+  * `~/.local/share/castget`
+
+    data directory for files that store the channel state. These files should not normally be edited manually.
+
+    castget looks for its data directory in the following order:
+
+      1. $XDG_DATA_HOME/castget
+
+      2. ~/.local/share/castget
+
+      3. ~/.castget
+
+    A custom data directory can be specified with the `--datadir` option or configured with the `datadir` key in the configuration file. These settings will take precedence over all the above locations and castget will terminate if the directory cannot be found.
+
+
 
 ## SEE ALSO
 

@@ -33,8 +33,11 @@ directory when processing the channel `fooc`.
   * `url`:
     retrieve RSS feed from this URL. The field is mandatory for all channel definitions.
 
-  * `spool`:
+  * `spool`, `spooldir`:
     download enclosures to this directory.
+
+  * `datadir`:
+    directory for channel state files.
 
   * `playlist`:
     write the fully qualified file names of all downloaded enclosures to an m3u style playlist file with this name.
